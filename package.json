@@ -1,0 +1,14 @@
+{
+  "name": "deytoday",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "start": "yarn start:web",
+    "start:web": "yarn workspace @deytoday/web start"
+  }
+}
