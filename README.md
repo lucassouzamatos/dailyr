@@ -1,7 +1,7 @@
 # ⚡️ Dailyr
 
 <p align="center">
-  <img src="introduction.png" width="200" alt="Dailyr brand">
+  <img src="introduction.png" alt="Dailyr brand">
 </p>
 
 ## Who
