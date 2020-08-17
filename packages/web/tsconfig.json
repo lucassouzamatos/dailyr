@@ -8,6 +8,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,9 +21,12 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "src",
-    "src/typings/**/*.d.ts"
+  "typeRoots": [
+    "./node_modules/@types",
+    "src/typings"
   ],
-  "extends": "./tsconfig.paths.json"
+  "extends": "./tsconfig.paths.json",
+  "include": [
+    "src"
+  ]
 }
