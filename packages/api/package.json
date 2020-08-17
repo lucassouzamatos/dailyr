@@ -1,0 +1,16 @@
+{
+    "name": "@deytoday/api",
+    "version": "0.1.0",
+    "description": "",
+    "scripts": {
+        "dev": "yarn install-db && (yarn db >/dev/null &) && yarn api",
+        "api": "./node_modules/.bin/sls offline",
+        "db": "./node_modules/.bin/sls dynamodb start",
+        "install-db": "./node_modules/.bin/sls dynamodb install"
+    },
+    "devDependencies": {
+        "serverless": "^1.78.1",
+        "serverless-dynamodb-local": "^0.2.39",
+        "serverless-offline": "^6.5.0"
+    }
+}
