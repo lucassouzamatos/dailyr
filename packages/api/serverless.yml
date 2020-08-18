@@ -1,80 +1,22 @@
-service: api-with-dynamodb
+service: api-with-eve
 
 frameworkVersion: ">=1.1.0 <2.0.0"
 
 plugins:
-  # allows us to simulate dynamodb locally
-  # the order here matters, in order to auto start the database
-  - serverless-dynamodb-local
-
   # allows us to serve the function locally
-  - serverless-offline
+  - serverless-wsgi
 
 custom:
-
-  # configure dynamodb
-  dynamodb:
-
-    # just apply this to dev
-    stages:
-      - dev
-    
-    # start config
-    start:
-      port: ${self:provider.environment.DYNAMODB_DEV_PORT}
-      inMemory: true  # do not touch the hard drive
-      migrate: true   # when started, create tables from the sls configuration
+  wsgi:
+    app: handlers/app.app
 
 provider:
   name: aws
   runtime: python3.8
-  environment:
-    # DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
-    DYNAMODB_TABLE: testing
-    DYNAMODB_DEV_PORT: 5001
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Query
-        - dynamodb:Scan
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 functions:
   index:
-    handler: handlers/index.get
+    handler: wsgi_handler.handler
     events:
-      - http:
-          path: testing
-          method: get
-          cors: true
-
-  store:
-    handler: handlers/store.create
-    events:
-      - http:
-          path: testing
-          method: post
-          cors: true
-
-resources:
-  Resources:
-    TodosDynamoDbTable:
-      Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
-      Properties:
-        AttributeDefinitions:
-          -
-            AttributeName: id
-            AttributeType: S
-        KeySchema:
-          -
-            AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+      - http: ANY /
+      - http: 'ANY {proxy+}'
