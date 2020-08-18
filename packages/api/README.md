@@ -1,6 +1,10 @@
 ## Running
-This will start and configure the database in the background and start the server listening in the terminal foreground, so you can see all incoming requests.
+1. Install developer requirements:
+```bash
+$ pip install -r requirements-dev.txt
+```
 
+2. Start and configure the database in the background then start the server listening in the terminal foreground with:
 ```bash
 $ yarn dev
 ```
