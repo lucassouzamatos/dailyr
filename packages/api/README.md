@@ -10,7 +10,7 @@ $ pip install -r requirements.txt
 $ yarn db
 ```
 
-It will hand your terminal, so now open another window.
+It will hang your terminal, so now open another window.
 
 
 3. Start the api listener: 
