@@ -35,7 +35,7 @@ There's a button for that in GitHub interface.
 **2. Clone your fork of the repository**
 
 ```console
-$ git clone http://github.com/<YOUR-GITHUB-USERNAME>/serenata-de-amor.git
+$ git clone http://github.com/<YOUR-GITHUB-USERNAME>/dailyr.git
 ```
 
 **3. Create a feature branch**
@@ -43,9 +43,6 @@ $ git clone http://github.com/<YOUR-GITHUB-USERNAME>/serenata-de-amor.git
 ```console
 $ git checkout -b <YOUR-GITHUB-USERNAME>-new-stuff
 ```
-
-Please, note that we prefix branch names with GitHub usernames, this helps us in keeping track of changes and who is working on them.
-
 
 **4. Do what you do best**
 
@@ -66,3 +63,6 @@ $ git push origin <YOUR-GITHUB-USERNAME>-new-stuff
 **7. Create a new _Pull Request_**
 
 From your fork at GitHub usually there is a button to open pull requests.
+
+### Credits
+This contributing guide template was adapted from the awesome [serenata-de-amor](https://github.com/okfn-brasil/serenata-de-amor).
