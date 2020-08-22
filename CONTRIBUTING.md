@@ -64,5 +64,5 @@ $ git push origin <YOUR-GITHUB-USERNAME>-new-stuff
 
 From your fork at GitHub usually there is a button to open pull requests.
 
-### Credits
+## Credits
 This contributing guide template was adapted from the awesome [serenata-de-amor](https://github.com/okfn-brasil/serenata-de-amor).
