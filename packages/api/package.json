@@ -1,0 +1,16 @@
+{
+  "name": "@deytoday/api",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "./node_modules/.bin/sls wsgi serve",
+    "db": "docker run --rm -p 27017:27017 mongo"
+  },
+  "dependencies": {
+    "serverless-wsgi": "^1.7.5"
+  },
+  "devDependencies": {
+    "serverless": "^1.79.0"  
+  }
+}
