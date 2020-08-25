@@ -47,7 +47,7 @@ def update_specific_item(item: dict):
 def change_item_before_its_created(items: list):
     """
     Called before some items are going to be persisted.
-    It is always a list, so even if you are inserting just one.
+    It is always a list, even if you are inserting just one.
 
     Good place to make customizations.
 
