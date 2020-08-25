@@ -24,7 +24,7 @@ export const Wrapper = styled.div<IWrapperProps>`
   align-items: center;
   justify-content: center;
   transition: all 1s 1s ease-in-out;
-  background: #fde291;
+  background: #27292C;
   position: fixed;
   top: 0;
   left: 0;
