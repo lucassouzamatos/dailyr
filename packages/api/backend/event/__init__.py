@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 # from . import ()
+from backend.util.attr import map_to_obj
+from backend.util.module import get_relative_name
 from backend.exception.event import MissingEventFunctionError
 from eve import Eve
 
@@ -21,27 +23,21 @@ def register_availables(app: Eve, modules: list = None) -> None:
     Register all available events using callback functions. The eve
     object is passed as argument to the callback of available modules.
 
+    It fails before executing the callbacks when any module does not have
+    the required callback attribute.
+
     :param app: a :class:`eve.Eve` object
     :param modules: list of available modules
     """
 
-    # keep track of modules without callback
-    #
-    # if any module had failed, we can not continue so instead of
-    # failing early, we try them all and remember the ones who
-    # failed to complain to the developer
-    failed_modules = []
+    callbacks, failed_modules = map_to_obj(CALLBACK_REG_NAME,
+                                           modules or get_availables())
 
-    for module in modules or get_availables():
-        # decides whether module has the callback
-        if hasattr(module, CALLBACK_REG_NAME):
-            callback = getattr(module, CALLBACK_REG_NAME)
-            callback(app)
-        else:
-            mod_name = module.__name__.split('.')[-1]
-
-            # add the module name to the list
-            failed_modules.append(mod_name)
-
+    # before even executing the callbacks
     if failed_modules:
-        raise MissingEventFunctionError(CALLBACK_REG_NAME, failed_modules)
+        module_names = map(get_relative_name, failed_modules)
+        raise MissingEventFunctionError(CALLBACK_REG_NAME, module_names)
+
+    # pass the execution to each callback
+    for callback in callbacks:
+        callback(app)

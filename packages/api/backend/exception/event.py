@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .util import msg_from_list
+from backend.util.format import msg_from_list
 
 
 class MissingEventFunctionError(AttributeError):
