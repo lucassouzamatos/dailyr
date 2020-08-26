@@ -7,7 +7,7 @@ plugins:
 
 custom:
   wsgi:
-    app: dailyr/wsgi.app
+    app: backend/wsgi.app
 
 provider:
   name: aws

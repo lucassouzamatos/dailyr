@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from dailyr.event import CALLBACK_REG_NAME, register_availables
-from dailyr.exception.event import MissingEventFunctionError
+from backend.event import CALLBACK_REG_NAME, register_availables
+from backend.exception.event import MissingEventFunctionError
 import pytest
 
 from unittest.mock import Mock

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from event import register_availables
+from backend.event import register_availables
 from eve import Eve
 
 

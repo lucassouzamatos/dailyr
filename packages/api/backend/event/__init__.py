@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # from . import ()
-from dailyr.exception.event import MissingEventFunctionError
+from backend.exception.event import MissingEventFunctionError
 from eve import Eve
 
 
