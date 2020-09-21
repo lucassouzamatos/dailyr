@@ -1,0 +1,21 @@
+service: rest-api
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+plugins:
+  - serverless-wsgi
+
+custom:
+  wsgi:
+    app: backend/wsgi.app
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  index:
+    handler: wsgi_handler.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
